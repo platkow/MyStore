@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
 
 public class BasePage {
     private static Logger logger = LoggerFactory.getLogger(BasePage.class);
-    private WebDriver driver;
+    protected WebDriver driver;
     private EventFiringMouse eventFiringMouse;
     protected WebListener listener;
 

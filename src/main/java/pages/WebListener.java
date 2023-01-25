@@ -16,4 +16,12 @@ public class WebListener extends AbstractWebDriverEventListener {
     public void afterClickOn(WebElement element, WebDriver driver) {
         logger.info(">>>>>>>>>>> After clicking on element <<<<<<<<<<<");
     }
+
+    public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
+        logger.info(">>>>>>>>>>> Before changing value of: " + element.getTagName() + " " + element.getText() + " to: " + keysToSend + " <<<<<<<<<<<");
+    }
+
+    public void afterChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
+        logger.info(">>>>>>>>>>> After changing value of element <<<<<<<<<<<");
+    }
 }
