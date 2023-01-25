@@ -19,13 +19,15 @@ public class MyStoreTests extends TestBase {
     Logger logger = LoggerFactory.getLogger("MyStoreTests.class");
     private MenuPage menuPage;
     private CreateAccountPage createAccountPage;
-    private User user;
+    private User randomUser;
+    private User registeredUser;
 
     @BeforeEach
     public void setup(){
         menuPage = new MenuPage(driver);
         createAccountPage = new CreateAccountPage(driver);
-        user = new UserFactory().getRandomUserWithBirthDate();
+        randomUser = new UserFactory().getRandomUserWithBirthDate();
+        registeredUser = new UserFactory().gerAlreadyRegisteredUser();
     }
 
     @Test
@@ -34,10 +36,39 @@ public class MyStoreTests extends TestBase {
         logger.info(" ---------- Start test ---------- ");
         menuPage.clickSignIn()
                 .createNewAccount()
-                .registerNewUser(user);
-        String expectedUser = user.getFirstName() + " " + user.getLastName();
+                .registerNewUser(randomUser);
+        String expectedUser = randomUser.getFirstName() + " " + randomUser.getLastName();
         String actualUser = menuPage.getLoggedUser();
 
         assertThat(expectedUser, equalTo(actualUser));
     }
+
+    @Test
+    @DisplayName("LoginAndBuy")
+    public void shouldLoginAndBuy(){
+        logger.info(" ---------- Start test ---------- ");
+        menuPage.clickSignIn()
+                .logInRegisteredUser(registeredUser)
+                .hoverAccessoriesSelectStationery()
+                .hoverAccessoriesSelectHomeAccessories()
+                .openAccessories()
+                .sortBy()
+                .selectHomeAccessories()
+                .selectAvailable()
+                .removeFilters()
+                .selectRandomProduct()
+                //continue in ProductPage
+
+
+//
+//
+//
+//
+//        String expectedUser = user.getFirstName() + " " + user.getLastName();
+//        String actualUser = menuPage.getLoggedUser();
+//
+//        assertThat(expectedUser, equalTo(actualUser));
+    }
+
+
 }

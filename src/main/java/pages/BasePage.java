@@ -56,6 +56,10 @@ public class BasePage {
         eventFiringMouse.mouseMove(coordinates);
     }
 
+    public void moveSlider(WebElement element){
+
+    }
+
     public WebElement waitForElementToBeVisible(WebDriver driver, WebElement element) {
         Wait<WebDriver> wait;
         WebElement visibleElement;

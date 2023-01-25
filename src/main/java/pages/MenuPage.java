@@ -39,6 +39,12 @@ public class MenuPage extends BasePage{
     @FindBy(css = ".account .hidden-sm-down")
     private WebElement loggedUser;
 
+    @FindBy(css = "#category-7 a")
+    private WebElement stationery;
+
+    @FindBy(css = "#category-8 a")
+    private WebElement homeAccessories;
+
     public SignInPage clickSignIn(){
         click(signIn);
         return new SignInPage(getDriver());
@@ -48,4 +54,22 @@ public class MenuPage extends BasePage{
         waitForElementToBeVisible(driver, loggedUser);
        return loggedUser.getText();
     }
+
+    public MenuPage hoverAccessoriesSelectStationery(){
+        mouseHover(accessories);
+        click(stationery);
+        return new MenuPage(driver);
+    }
+
+    public MenuPage hoverAccessoriesSelectHomeAccessories(){
+        mouseHover(accessories);
+        click(homeAccessories);
+        return new MenuPage(driver);
+    }
+
+    public AccessoriesPage openAccessories(){
+        click(accessories);
+        return new AccessoriesPage(driver);
+    }
+
 }

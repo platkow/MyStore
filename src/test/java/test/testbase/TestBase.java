@@ -30,10 +30,10 @@ public class TestBase {
         logger.debug(" ---------- Driver initialization complete ---------- ");
     }
 
-    @AfterAll
-    static void tearDown() {
-        driver.quit();
-        logger.debug("Driver quit");
-        logger.info(" ----------  End test  ---------- ");
-    }
+//    @AfterAll
+//    static void tearDown() {
+//        driver.quit();
+//        logger.debug("Driver quit");
+//        logger.info(" ----------  End test  ---------- ");
+//    }
 }
